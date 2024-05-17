@@ -6,10 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vix's website</title>
     <style>
+        body {
+            background-color: #ff92d6;
+            color: white;
+            font-family: 'Noteworthy', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
         .dropdown {
             position: relative;
             display: inline-block;
-            width: 230px; /* widened dropdown */
+            width: 100%;
+            max-width: 230px;
+            margin: 10px 0;
         }
 
         .dropdown-content {
@@ -26,29 +47,56 @@
             overflow-y: auto; /* added scrollbar for vertical overflow */
             max-height: 300px; /* increased max-height for taller dropdown */
         }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #f1a1d3;
+        
+        .dropdown .dropbtn {
+            background-color: #eb34c3;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            width: 100%;
         }
 
         .dropdown-content p {
-            margin: 0 0 20px 0; /* increased margin between paragraphs */
-            font-size: 18px; /* increased font size */
+            margin: 0 0 20px 0;
+            font-size: 18px;
+        }
+
+        .dropdown-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            max-width: 230px;
+            margin: 0 auto 20px;
+            background-color: #297bd8;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body style="background-color: #ff92d6; color: white; font-family: 'Noteworthy', Arial, sans-serif;">
-    <header style="text-align: center; padding: 20px;">
-        <h1 style="margin: 0;">Vix's Commissions<br><br>ミ★you need to read through my TOS and then you may check out my prices<br>★☆★☆★☆★☆★☆<br>ミ★thanks for reading and I hope you consider commissioning me!</h1>
+<body>
+    <header>
+        <h1>Vix's Commissions<br><br>ミ★you need to read through my TOS and then you may check out my prices<br>★☆★☆★☆★☆★☆<br>ミ★thanks for reading and I hope you consider commissioning me!</h1>
     </header>
-    <nav style="text-align: center;">
-        <button style="background-color: #297bd8; color: white; padding: 10px 20px; font-size: 16px; margin: 20px 10px; border: none; cursor: pointer; border-radius: 10px;"><a href="https://vix9.xyz/exampleworks.html" style="text-decoration: none; color: inherit;">★ example works ★</a></button><br>
+    <nav>
+        <button><a href="https://vix9.xyz/exampleworks.html">★ example works ★</a></button><br>
         <div class="dropdown">
-            <button style="background-color: #eb34c3; color: white; padding: 10px 20px; font-size: 16px; margin: 20px 10px; border: none; cursor: pointer; border-radius: 10px;" class="dropbtn">★ tos ★</button>
+            <button class="dropbtn">★ tos ★</button>
             <div class="dropdown-content">
                 <p>ミ★ TOS
                     ★ do not commission me if you are under the age of 13 unless you have consent from a legal guardian or parent<br>
@@ -76,13 +124,13 @@
             </div>
         </div>
         <div class="dropdown">
-            <button style="background-color: #eb34c3; color: white; padding: 10px 20px; font-size: 16px; margin: 20px 10px; border: none; cursor: pointer; border-radius: 10px;" class="dropbtn">★ size chart ★</button>
+            <button class="dropbtn">★ size chart ★</button>
             <div class="dropdown-content">
                 <img src="https://vixcomm.carrd.co/assets/images/image01.png?v=42bc0327" alt="Size Chart">
             </div>
         </div>
         <div class="dropdown">
-            <button style="background-color: #eb34c3; color: white; padding: 10px 20px; font-size: 16px; margin: 20px 10px; border: none; cursor: pointer; border-radius: 10px;" class="dropbtn">★ prices ★ </button>
+            <button class="dropbtn">★ prices ★ </button>
             <div class="dropdown-content">
                 <p>ミ★ commission prices and options<br>
                     all come fully shaded ♥︎<br><br>
@@ -107,7 +155,7 @@
             </div>
         </div>
         <div class="dropdown">
-            <button style="background-color: #eb34c3; color: white; padding: 10px 20px; font-size: 16px; margin: 20px 10px; border: none; cursor: pointer; border-radius: 10px;" class="dropbtn">★ contact & payment ★</button>
+            <button class="dropbtn">★ contact & payment ★</button>
             <div class="dropdown-content">
                 <p>ミ★ how to contact me<br>
                     ミ★ if you’re thinking about commissioning me (even if you’re not fully sure) DM me on discord, my username is: https_vix<br>
@@ -117,6 +165,25 @@
                     i take payments through my cashapp account, $MudkipAnimated</p>
             </div>
         </div>
-    </main>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                const button = dropdown.querySelector('.dropbtn');
+                const content = dropdown.querySelector('.dropdown-content');
+                
+                button.addEventListener('click', () => {
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+                
+                document.addEventListener('click', (event) => {
+                    if (!dropdown.contains(event.target)) {
+                        content.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
